@@ -33,7 +33,10 @@
                 <label for="visitNotes">訪問内容</label>
                 <textarea id="visitNotes" name="visitNotes">${visitRecord.visitNotes}</textarea>
             </div>
-
+			<div class="form-group">
+                <label for="followUpDate">次回訪問日</label>
+                <input type="datetime-local" id="followUpDate" name="followUpDate" value="${visitRecord.followUpDate}" />
+            </div>
             <div class="form-actions">
                 <button type="submit" class="submit-button">更新</button>
             </div>

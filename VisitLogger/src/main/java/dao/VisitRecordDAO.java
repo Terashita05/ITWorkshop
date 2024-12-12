@@ -226,14 +226,22 @@ public class VisitRecordDAO {
 	// 訪問記録を更新
     public void updateMutter(VisitRecord visitRecord) {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-            String sql = "UPDATE SalesVisitRecord SET CLIENT_NAME = ?, VISIT_DATE = ?, ADDRESS = ?, VISIT_NOTES = ? WHERE id = ?, FOLLOW_UP_DATE = ?";
+            String sql = "UPDATE SalesVisitRecord SET CLIENT_NAME = ?, VISIT_DATE = ?, ADDRESS = ?, VISIT_NOTES = ? , FOLLOW_UP_DATE = ? WHERE id = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, visitRecord.getClientName());
                 pstmt.setString(2, visitRecord.getVisitDate());
                 pstmt.setString(3, visitRecord.getAddress());
                 pstmt.setString(4, visitRecord.getVisitNotes());
-                pstmt.setInt(5, visitRecord.getId());
-                pstmt.setString(6, visitRecord.getFollowUpDate());
+             // FOLLOW_UP_DATE が空文字なら NULL をセット
+                if (visitRecord.getFollowUpDate() == null || visitRecord.getFollowUpDate().isEmpty()) {
+                    pstmt.setNull(5, java.sql.Types.TIMESTAMP);
+                } else {
+                    pstmt.setString(5, visitRecord.getFollowUpDate());
+                }
+                
+              //  pstmt.setString(5, visitRecord.getFollowUpDate());
+                pstmt.setInt(6, visitRecord.getId());
+                
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {

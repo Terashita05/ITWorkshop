@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import dao.DashboardDAO;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -55,8 +54,8 @@ public class Dashboard extends HttpServlet {
 			        request.getRequestDispatcher("/WEB-INF/jsp/dashboard.jsp").forward(request, response);
 					
 					
-					RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
-					dispatcher.forward(request, response);
+					//RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
+				//	dispatcher.forward(request, response);
 				}
 		
 	}

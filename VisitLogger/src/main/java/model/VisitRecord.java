@@ -23,14 +23,15 @@ public class VisitRecord implements Serializable{
 		this.followUpDate = followUpDate;
 	}
 
-	public VisitRecord(int id, String visitDate, String clientName, String contactPerson, String visitNotes,
-			String address) {
+	public VisitRecord(int id, String visitDate, String clientName, String visitNotes,
+			String address, String  followUpDate) {
 		this.id = id;
 		this.visitDate = visitDate;
 		this.clientName = clientName;
-		this.contactPerson = contactPerson;
+		
 		this.visitNotes = visitNotes;
 		this.address = address;
+		this.followUpDate = followUpDate;
 	}
 
 
@@ -47,7 +48,7 @@ public class VisitRecord implements Serializable{
 	}
 
 
-	public VisitRecord(int id, String clientName, String visitDate, String address, String visitNotes) {
+	public VisitRecord(int id, String visitDate, String clientName, String visitNotes, String address) {
 		this.id = id;
 		this.visitDate = visitDate;
 		this.clientName = clientName;
@@ -62,7 +63,15 @@ public class VisitRecord implements Serializable{
 		this.visitNotes = visitNotes;
 		this.address = address;
 	}
-
+	public VisitRecord(String visitDate, String clientName, String contactPerson, String visitNotes, String address, String followUpDate) {
+		super();
+		this.visitDate = visitDate;
+		this.clientName = clientName;
+		this.contactPerson = contactPerson;
+		this.visitNotes = visitNotes;
+		this.address = address;
+		this.followUpDate = followUpDate;
+	}
 
 
 	public int getId() {

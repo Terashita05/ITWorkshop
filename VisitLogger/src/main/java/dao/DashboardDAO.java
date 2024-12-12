@@ -26,20 +26,29 @@ public class DashboardDAO {
 	             ResultSet rs = pstmt.executeQuery();
 
 	            while (rs.next()) {
-	                String clientName = rs.getString("CLIENT_NAME");
-	               
-	                
-	                Timestamp followUpDate = rs.getTimestamp("FOLLOW_UP_DATE");
+	            	int id = rs.getInt("ID");
+	            	Timestamp visitDate = rs.getTimestamp("VISIT_DATE");
+	            	String clientName = rs.getString("CLIENT_NAME");
+	     
+	            	String visitNotes = rs.getString("VISIT_NOTES");
+	            	String address = rs.getString("ADDRESS");
+	            	Timestamp followUpDate = rs.getTimestamp("FOLLOW_UP_DATE");
 	                 // 日時フォーマット（訪問日時と作成日時）
 	                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	                String formattedFollowUpDate = null;
-	                
-	                if(followUpDate != null) {
-	                	formattedFollowUpDate = dateFormat.format(followUpDate);
-	                }
-					
+	                    String formattedVisitDate = null;
+	                    String formattedFollowUpDate = null;
+	                    if(visitDate != null ) {
+	    	                // 訪問日時と作成日時をフォーマットして表示（秒なし）
+	    	                formattedVisitDate = dateFormat.format(visitDate);
+	                    }
+	                    if(followUpDate != null) {
+	                    	formattedFollowUpDate = dateFormat.format(followUpDate);
+	                    }
+	    				
+	                    VisitRecord visitRecord = new VisitRecord(id, formattedVisitDate, clientName, contactPerson, visitNotes, address, formattedFollowUpDate);
+	    				list.add(visitRecord);
 	               
-	                list.add(new VisitRecord(clientName, formattedFollowUpDate));
+	              //  list.add(new VisitRecord(clientName, formattedFollowUpDate));
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -47,3 +56,7 @@ public class DashboardDAO {
 	        return list;
 	    }
 }
+
+
+
+

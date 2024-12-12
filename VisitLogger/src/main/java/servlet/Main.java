@@ -11,9 +11,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.GetVisitRecordListLogic;
-import model.VisitRecord;
 import model.PostVisitRecordLogic;
 import model.User;
+import model.VisitRecord;
 
 /**
  * Servlet implementation class Main
@@ -58,6 +58,7 @@ public class Main extends HttpServlet {
 		String clientName = request.getParameter("clientName");
 		String text = request.getParameter("text");
 		String address = request.getParameter("address");
+		String followUp_date = request.getParameter("followUp_date");
 		String search = request.getParameter("search");
 		//入力チェック
 		if(text != null && text.length() != 0){
@@ -70,7 +71,7 @@ public class Main extends HttpServlet {
 			User loginUser = (User)session.getAttribute("loginUser");
 			
 			//つぶやきを作成してつぶやきリストに追加
-			VisitRecord visitRecord = new VisitRecord(visit_date, clientName, loginUser.getName(), text, address);
+			VisitRecord visitRecord = new VisitRecord(visit_date, clientName, loginUser.getName(), text, address, followUp_date);
 			
 			PostVisitRecordLogic postMutterLogic = new PostVisitRecordLogic();
 			postMutterLogic.execute(visitRecord);

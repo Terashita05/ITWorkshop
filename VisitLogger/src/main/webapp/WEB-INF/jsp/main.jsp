@@ -16,6 +16,7 @@
             <div class="user-info">
                 <span><c:out value="${loginUser.name}" /> さん、ログイン中</span>
                 <a href="Logout" class="logout-button">ログアウト</a>
+                <a href="Dashboard" class="dashboard-button">ダッシュボード</a>
             </div>
         </header>
 
@@ -55,7 +56,10 @@
                         <label for="text">訪問記録</label>
                         <textarea id="text" name="text" placeholder="訪問記録を入力" rows="8"></textarea>
                     </div>
-                    
+                    <div class="form-group">
+                            <label for="followUp_date">次回訪問日</label>
+                            <input type="datetime-local" id="followUp_date" name="followUp_date">
+                        </div>
                     <button type="submit" class="submit-button">投稿</button>
                 </form>
             </section>
