@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>訪問記録の編集</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/edit.css">
 </head>
 <body>
     <div class="app-container">

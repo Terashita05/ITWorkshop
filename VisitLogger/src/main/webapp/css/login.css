@@ -1,0 +1,73 @@
+/* Login Page Styles */
+.login-container {
+    max-width: 900px; /* 他のセクションと統一 */
+    margin: 20px auto;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 40px; /* 他と同様の余白設定 */
+    text-align: center;
+}
+
+.login-container h1 {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* フォーム要素間の適度な余白 */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* ラベルと入力欄の間の余白 */
+}
+
+label {
+    font-weight: bold;
+    color: #495057;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* フル幅で他のフォームのボタンと一致 */
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+.submit-button:active {
+    background-color: #003d80;
+}

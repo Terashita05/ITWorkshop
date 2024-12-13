@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
-    <a href="Main">訪問記録画面へ</a>
+    <form action="Main" method="get" style="display:inline;">
+        <button type="submit" class="main-button">訪問記録画面へ</button>
+    </form>
 
     <%
         // セッションスコープからユーザー情報を取得
@@ -21,9 +23,9 @@
         <p>ログインし直してください</p>
         <a href="index.jsp">TOPへ</a>
     <% } %>
-    <h1>ダッシュボード</h1>
+    <h1>訪問予定</h1>
     <section>
-        <h2>次回訪問予定</h2>
+       
         <table>
             <thead>
                 <tr>

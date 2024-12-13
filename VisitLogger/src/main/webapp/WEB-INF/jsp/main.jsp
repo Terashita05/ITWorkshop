@@ -9,26 +9,34 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+	
     <div class="app-container">
         <!-- Header Section -->
+        <form action="Dashboard" method="get" style="display:inline;">
+        			<button type="submit" class="nav-button">訪問予定画面へ</button>
+    			</form>
         <header>
-            <h1>どこつぶ</h1>
+        
+            <h1>訪問記録管理</h1>
             <div class="user-info">
                 <span><c:out value="${loginUser.name}" /> さん、ログイン中</span>
                 <a href="Logout" class="logout-button">ログアウト</a>
-                <a href="Dashboard" class="dashboard-button">ダッシュボード</a>
             </div>
         </header>
-
+		
         <!-- Main Content -->
         <main>
             <!-- Search Section -->
             <section class="search-section">
-                <form action="Main" method="post">
+                <form action="Main" method="post" style="display:inline;">
                     <input type="text" name="search" value="${search}" placeholder="検索キーワードを入力">
-                    <button type="submit">検索</button>
-                    <a href="Main" class="refresh-button">更新</a>
+                    <button type="submit">検索</button>     
                 </form>
+                <form action="Main" method="get" style="display:inline;">
+        			<button type="submit" class="nav-button">検索クリア</button>
+    			</form>
+                <!--<a href="Main" class="refresh-button">検索クリア</a>-->
+                
             </section>
 
             <!-- Post Section -->
@@ -60,7 +68,7 @@
                             <label for="followUp_date">次回訪問日</label>
                             <input type="datetime-local" id="followUp_date" name="followUp_date">
                         </div>
-                    <button type="submit" class="submit-button">投稿</button>
+                    <button type="submit" class="submit-button">登録</button>
                 </form>
             </section>
 
