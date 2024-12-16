@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>どこつぶ</title>
+<link rel="stylesheet" href="css/global.css"> <!-- 統一されたCSSファイル -->
 <link rel="stylesheet" href="css/login.css"> <!-- 統一されたCSSファイル -->
 </head>
 <body>

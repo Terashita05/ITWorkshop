@@ -1,4 +1,6 @@
-/* Global Styles */
+@charset "UTF-8";
+
+/* ========== Global Styles ========== */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f6f9;
@@ -14,16 +16,17 @@ body {
     box-sizing: inherit;
 }
 
+/* App Container */
 .app-container {
     max-width: 900px;
     margin: 20px auto;
     background-color: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    padding: 40px; /* 左右の余白を均等に広げる */
+    padding: 40px;
 }
 
-/* Header */
+/* ========== Header Styles ========== */
 header {
     background-color: #007bff;
     color: white;
@@ -37,39 +40,31 @@ header h1 {
     font-size: 1.8rem;
 }
 
-.logout-button {
+/* Buttons in Header */
+.logout-button,
+.dashboard-button {
+    background-color: #dc3545;
     color: white;
     text-decoration: none;
-    background-color: #dc3545;
     padding: 8px 12px;
     border-radius: 4px;
-}
-.dashboard-button {
-   color: white;
-    text-decoration: none;
-    background-color: #dc3545;
-    padding: 8px 12px;
-    border-radius: 4px;
+    border: none;
+    cursor: pointer;
 }
 
-.nav-button button{
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
+.logout-button:hover,
+.dashboard-button:hover {
+    background-color: #b02a37;
 }
+
+/* Navigation Button */
+
 
 .nav-button:hover {
-    background-color: #0056b3;
+    background-color: #b30000;
 }
 
-/* Main */
+/* ========== Main Content ========== */
 main {
     padding: 20px 0;
 }
@@ -79,13 +74,16 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Search Section */
+/* ========== Search Section ========== */
 .search-section {
     background-color: #f7f9fc;
-    padding: 20px 30px; /* 左右の余白を追加 */
+    padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .search-section form {
@@ -107,9 +105,15 @@ h2 {
     background-color: #007bff;
     color: white;
     border-radius: 4px;
+    cursor: pointer;
 }
 
-/* Form Section */
+.search-section button:hover,
+.search-section .refresh-button:hover {
+    background-color: #0056b3;
+}
+
+/* ========== Form Section ========== */
 .post-section form {
     background-color: #f7f9fc;
     padding: 30px;
@@ -120,7 +124,7 @@ h2 {
 
 .form-group-horizontal {
     display: flex;
-    gap: 30px; /* 横並びの項目間の間隔を調整 */
+    gap: 30px;
     margin-bottom: 20px;
 }
 
@@ -133,22 +137,31 @@ h2 {
 label {
     font-weight: bold;
     margin-bottom: 8px;
+    color: #555;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 訪問記録入力欄の調整 */
+input:focus,
+textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
 textarea {
     resize: vertical;
     min-height: 140px;
 }
 
-/* ボタンの位置調整 */
+/* Submit Button */
 button {
     background-color: #007bff;
     color: white;
@@ -156,17 +169,22 @@ button {
     border: none;
     border-radius: 4px;
     margin-top: 20px;
-    align-self: flex-start; /* 左寄せで余白 */
+    cursor: pointer;
+    font-size: 16px;
 }
 
-/* Mutter List */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* ========== Visit Record List ========== */
 .visitRecord-list {
     margin-top: 30px;
 }
 
 .visitRecord-card {
     background-color: #f9f9f9;
-    padding: 20px 30px; /* 左右の余白を広げる */
+    padding: 20px 30px;
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -179,9 +197,15 @@ button {
     padding: 8px 12px;
     border-radius: 4px;
     margin-left: 10px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-/* Footer */
+.map-button:hover {
+    background-color: #0056b3;
+}
+
+/* ========== Footer ========== */
 footer {
     background-color: #f8f9fa;
     text-align: center;

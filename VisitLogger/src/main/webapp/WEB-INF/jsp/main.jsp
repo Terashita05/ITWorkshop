@@ -6,8 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <title>どこつぶ - 訪問記録管理</title>
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 	
     <div class="app-container">

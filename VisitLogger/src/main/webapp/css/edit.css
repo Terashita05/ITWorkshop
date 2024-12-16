@@ -1,47 +1,6 @@
 @charset "UTF-8";
-/* 共通のスタイル */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f6f9;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+/* Edit Page Styles */
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
-.app-container {
-    max-width: 900px;
-    margin: 20px auto;
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 40px;
-    width: 100%; /* 幅をデフォルトで最大に */
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* コンテンツ間の間隔を統一 */
-}
-
-/* ヘッダー */
-h1 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #007bff;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* フォーム */
 .edit-form {
     display: flex;
     flex-direction: column;
@@ -84,44 +43,7 @@ textarea {
     min-height: 140px;
 }
 
-/* ボタン */
-.form-actions {
-    text-align: center;
-}
-
 .submit-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-size: 16px;
+    width: 100%;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.submit-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.03); /* 軽い視覚的効果を追加 */
-}
-
-.submit-button:active {
-    background-color: #003d80;
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-    .app-container {
-        padding: 20px;
-        gap: 15px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .submit-button {
-        width: 100%;
-    }
 }
