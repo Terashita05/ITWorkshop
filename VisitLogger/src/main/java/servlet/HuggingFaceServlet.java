@@ -43,7 +43,7 @@ import okhttp3.Response;
 public class HuggingFaceServlet extends HttpServlet {
 
 	  private static final String API_URL = "https://api-inference.huggingface.co/models/rinna/japanese-gpt-neox-3.6b-instruction-sft";
-    private static final String API_TOKEN = "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"; // Hugging Face APIトークン
+    private static final String API_TOKEN = ""; // Hugging Face APIトークン
 //
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
