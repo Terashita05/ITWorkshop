@@ -25,6 +25,14 @@
         <a href="index.jsp">TOPへ</a>
     <% } %>
     <h1>訪問予定</h1>
+    <div class="app-container">
+        <h1>Hugging Face API 質問フォーム</h1>
+        <form action="HuggingFaceServlet" method="post">
+            <label for="question">質問を入力してください：</label><br>
+            <textarea id="question" name="question" rows="5" cols="50" required></textarea><br>
+            <button type="submit">送信</button>
+        </form>
+    </div>
     <section>
        
         <table>
