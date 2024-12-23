@@ -10,10 +10,34 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.User;
 
 @WebServlet("/GeminiAPI")
 public class GeminiAPI extends HttpServlet {
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		//ログインしているか確認するため、セッションスコープからユーザー情報を取得
+				HttpSession session = request.getSession();
+				User loginUser = (User)session.getAttribute("loginUser");
+				
+				if(loginUser == null) {//ログインしていない場合
+					//リダイレクト
+					response.sendRedirect("index.jsp");
+				}else {//ログイン済みの場合
+					//フォワード
+					// DAOを使ってデータを取得
+			        
+			        // JSPにフォワード
+			        request.getRequestDispatcher("/WEB-INF/jsp/geminiAPI.jsp").forward(request, response);
+					
+					
+					//RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
+				//	dispatcher.forward(request, response);
+				}
+	}
     // Pythonスクリプトの相対パス
 //    private static final String PYTHON_SCRIPT_PATH = "../gemini_api.py";  // サーブレットから見た相対パスで指定
 //    // Python実行ファイルが配置されている場所の相対パス
@@ -22,8 +46,8 @@ public class GeminiAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // ユーザー入力を取得
-        String question = request.getParameter("question");
-        if (question == null || question.trim().isEmpty()) {
+        String prompt = request.getParameter("prompt");
+        if (prompt == null || prompt.trim().isEmpty()) {
             response.getWriter().println("Error: 質問が入力されていません。");
             return;
         }
@@ -35,7 +59,7 @@ public class GeminiAPI extends HttpServlet {
         String pythonScriptPath = "C:\\Users\\8Java13\\Desktop\\サーブレット_JSP\\VisitLogger\\gemini_api.py";
         String pythonExecutablePath = "C:\\Users\\8Java13\\AppData\\Local\\Programs\\Python\\Python313\\python.exe";
         // Pythonスクリプトの実行
-        ProcessBuilder processBuilder = new ProcessBuilder(pythonExecutablePath, pythonScriptPath, question);
+        ProcessBuilder processBuilder = new ProcessBuilder(pythonExecutablePath, pythonScriptPath, prompt);
        // processBuilder.directory(new java.io.File(currentDirectory));  // サーブレットの作業ディレクトリを指定
         processBuilder.redirectErrorStream(true);  // エラーストリームも標準出力にリダイレクト
 
@@ -45,7 +69,7 @@ public class GeminiAPI extends HttpServlet {
             process.waitFor(60, TimeUnit.SECONDS);  // タイムアウトの設定（60秒）
 
             // Pythonスクリプトの標準出力を取得
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
             StringBuilder output = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -57,7 +81,7 @@ public class GeminiAPI extends HttpServlet {
 
             // 生成されたテキストをJSPに渡す
             request.setAttribute("response", generatedText);
-            request.getRequestDispatcher("/WEB-INF/jsp/jeminiAPI.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/geminiAPI.jsp").forward(request, response);
 
         } catch (Exception e) {
             response.getWriter().println("Error: Pythonスクリプトの実行中に問題が発生しました。詳細: " + e.getMessage());

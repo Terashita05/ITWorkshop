@@ -1,25 +1,41 @@
 import google.generativeai as genai
+import sys
+import logging
+import os
+sys.stdout.reconfigure(encoding='utf-8')
 
-# APIキーを直接設定
-GOOGLE_API_KEY = ""
+# 取得したAPIキーを設定
+API_KEY = "AIzaSyDuZcz-k-hWvKRaYy4pPe12IDSJA9pCpgQ"  # ここに取得したAPIキーを入力
 
-# APIキーを設定
-genai.configure(api_key=GOOGLE_API_KEY)
+# モデルの指定
+MODEL_NAME = "gemini-1.5-flash"  # 使用するGeminiモデル
+logging.basicConfig(level=logging.WARNING)
+def call_gemini_api(prompt):
+    genai.configure(api_key=API_KEY)
+    model = genai.GenerativeModel(MODEL_NAME)
+    # response = model.generate_content(pronpt)
+    response = model.generate_content(prompt)
 
-def call_gemini_api(question):
-    try:
-        # "gemini-pro" モデルを使用してコンテンツを生成
-        gemini_pro = genai.GenerativeModel("gemini-pro")
-        response = gemini_pro.generate_content(question, timeout=120)
-        return response.text  # 生成されたテキストを返す
-    except Exception as e:
-        return f"Error: {str(e)}"
+    return response.text
+    # try:
+    #     # APIリクエストを送信
+    #     response = genai.generate_text(
+    #         model=MODEL_NAME,
+    #         prompt=prompt,
+    #         max_output_tokens=max_output_tokens
+    #     )
+    #     return response
+    # except Exception as e:
+    #     print(f"Error occurred: {e}")
+    #     return None
 
+# テストクエリ
 if __name__ == "__main__":
-    import sys
-    if len(sys.argv) > 1:
-        question = sys.argv[1]
-        result = call_gemini_api(question)
-        print(result)  # 結果を標準出力に出力
-    else:
-        print("Error: No question provided.")
+
+    if len(sys.argv) < 2:
+        print("Error: プロンプトが指定されていません。")
+        sys.exit(1)
+
+    prompt = sys.argv[1]
+    result = call_gemini_api(prompt)
+    print(result)

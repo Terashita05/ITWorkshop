@@ -9,10 +9,12 @@
 <body>
     <div class="app-container">
         <h1>API応答結果</h1>
-        <p><strong>質問：</strong><%= request.getParameter("question") %></p>
+      
         <h2>応答</h2>
-        <pre><%= request.getAttribute("response") %></pre>
-        <a href="index.jsp">戻る</a>
+        <%= request.getAttribute("response") %>
+         <form action="Dashboard" method="get" style="display:inline;">
+        			<button type="submit" class="nav-button">訪問予定画面へ</button>
+    	</form>
     </div>
 </body>
 </html>

@@ -15,8 +15,18 @@
     <div class="app-container">
         <!-- Header Section -->
         <form action="Dashboard" method="get" style="display:inline;">
-        			<button type="submit" class="nav-button">訪問予定画面へ</button>
-    			</form>
+        	<button type="submit" class="nav-button">訪問予定画面へ</button>
+    	</form>
+		<form action="GeminiAPI" method="get" style="display:inline;">
+        	<button type="submit" class="nav-button">Gemini</button>
+    	</form>
+        <h1>Gemini API 質問フォーム</h1>
+        <form action="GeminiAPI" method="post">
+            <label for="prompt">質問を入力してください：</label><br>
+            <textarea id="prompt" name="prompt" rows="5" cols="50" required></textarea><br>
+            <button type="submit">送信</button>
+        </form>
+    
         <header>
         
             <h1>訪問記録管理</h1>
@@ -69,7 +79,7 @@
                     <div class="form-group">
                             <label for="followUp_date">次回訪問日</label>
                             <input type="datetime-local" id="followUp_date" name="followUp_date">
-                        </div>
+                    </div>
                     <button type="submit" class="submit-button">登録</button>
                 </form>
             </section>
@@ -109,7 +119,7 @@
                 <p class="error-message">${errorMsg}</p>
             </c:if>
         </main>
-
+		
         <!-- Footer Section -->
         <footer>
             <p>© 2024 どこつぶ</p>
