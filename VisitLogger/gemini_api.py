@@ -5,7 +5,7 @@ import os
 sys.stdout.reconfigure(encoding='utf-8')
 
 # 取得したAPIキーを設定
-API_KEY = "AIzaSyDuZcz-k-hWvKRaYy4pPe12IDSJA9pCpgQ"  # ここに取得したAPIキーを入力
+API_KEY = ""  # ここに取得したAPIキーを入力
 
 # モデルの指定
 MODEL_NAME = "gemini-1.5-flash"  # 使用するGeminiモデル
